@@ -1,5 +1,5 @@
-// Демо анимаций для концептов. Включается параметром ?motion в адресе страницы.
-// Без параметра страница остаётся спокойной, в плашке концепта появляется переключатель.
+// Анимации концептов. Включены по умолчанию; параметр ?static в адресе показывает страницу без движения.
+// В плашке концепта есть переключатель «Выключить анимацию» / «Включить анимацию».
 // Учитывает системную настройку «уменьшить движение»: тогда анимации не включаются.
 //
 // У каждого варианта один главный сценарий, остальное работает тише:
@@ -9,7 +9,7 @@
 //   D «Вечер»    в гостиной сначала горит лампа, потом зажигается свет; капсула собирается по предметам
 (function () {
   var html = document.documentElement;
-  var on = /[?&]motion\b/.test(location.search) || html.hasAttribute('data-motion');
+  var on = !/[?&](static|motion=(0|off))\b/.test(location.search) && !html.hasAttribute('data-static');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var variant = document.body.getAttribute('data-variant');
@@ -17,10 +17,10 @@
   // Переключатель в плашке концепта
   var note = document.querySelector('.concept-note');
   if (note) {
-    var q = location.search.replace(/[?&]motion(=[^&]*)?/, '').replace(/^&/, '?');
-    if (!on) q = q ? q + '&motion' : '?motion';
+    var q = location.search.replace(/[?&](static|motion)\b(=[^&]*)?/g, '').replace(/^&/, '?');
+    if (on) q = q ? q + '&static' : '?static';
     var t = document.createElement('a');
-    t.href = location.pathname + q;
+    t.href = location.pathname + q + location.hash;
     t.textContent = on ? 'Выключить анимацию' : 'Включить анимацию';
     note.appendChild(document.createElement('br'));
     note.appendChild(t);
