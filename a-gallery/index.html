@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вариант A · Галерея — New Home Concept</title>
+<link rel="icon" href="../brand/logo/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<style>
+/* Вариант A «Галерея» — развитие макета заказчицы: фото на всю ширину, крупная антиква, ссылки-подчёркивания */
+.header { position: relative; border-bottom: 1px solid rgba(64,47,37,.12); }
+.header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
+.header .logo img { height: 34px; width: auto; }
+.nav-desktop { display: flex; gap: 34px; font-size: 14px; }
+.nav-desktop a { text-decoration: none; }
+.nav-desktop a:hover { text-decoration: underline; text-underline-offset: 6px; }
+
+.hero { position: relative; height: min(86vh, 820px); min-height: 520px; overflow: hidden; background: var(--brown-deep); }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%;
+  animation: settle 2.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes settle { from { transform: scale(1.06); opacity: .4; } to { transform: none; opacity: 1; } }
+.hero::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(46,33,25,.82) 0%, rgba(46,33,25,.5) 34%, rgba(46,33,25,0) 62%); }
+.hero .wrap { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; color: var(--cream); }
+.hero h1 { font-size: clamp(46px, 7vw, 96px); font-weight: 400; max-width: 11ch; }
+.hero p { margin: 26px 0 38px; font-size: clamp(16px, 1.6vw, 19px); font-weight: 300; max-width: 30ch; }
+
+.section { padding-block: clamp(72px, 10vw, 140px); }
+.h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 400; max-width: 14ch; }
+.lead { color: var(--ink-soft); max-width: 46ch; font-size: 17px; }
+
+.plan .h2 { margin-bottom: clamp(32px, 4vw, 56px); }
+.plan-photo { width: 100%; aspect-ratio: 757 / 257; object-fit: cover; }
+.triad { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 34px; }
+.triad a { text-decoration: none; text-align: center; font: 400 clamp(26px, 3vw, 38px)/1.2 var(--serif); padding: 8px 12px; }
+.triad a + a { border-left: 1px solid rgba(64,47,37,.35); }
+.triad a:hover { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
+
+.dirs { margin-top: clamp(56px, 7vw, 96px); border-top: 1px solid rgba(64,47,37,.2); }
+.dirs li { display: grid; grid-template-columns: minmax(200px, 1fr) 2fr 170px; gap: 24px; align-items: baseline;
+  padding: 26px 0; border-bottom: 1px solid rgba(64,47,37,.2); }
+.dirs h3 { font-size: clamp(24px, 2.6vw, 32px); }
+.dirs p { color: var(--ink-soft); max-width: 52ch; }
+.dirs a { font-size: 14px; white-space: nowrap; text-underline-offset: 5px; }
+
+.catalog-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; }
+.products { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 28px); }
+.product img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--limestone); }
+.product h3 { font-size: 22px; margin-top: 16px; }
+.product p { font-size: 14px; color: var(--ink-soft); margin: 4px 0 10px; }
+.product a { font-size: 14px; text-underline-offset: 5px; }
+
+.quality { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.quality img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.stages { margin-top: 40px; display: grid; gap: 26px; counter-reset: st; }
+.stages li { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding-top: 18px; border-top: 1px solid rgba(64,47,37,.2); }
+.stages strong { font: 500 22px/1.2 var(--serif); }
+.stages p { color: var(--ink-soft); font-size: 15px; }
+
+.partners { background: var(--limestone); }
+.partners .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.partners ul { margin: 30px 0 38px; display: grid; gap: 12px; }
+.partners li { padding-left: 22px; position: relative; }
+.partners li::before { content: ""; position: absolute; left: 0; top: .8em; width: 10px; height: 1px; background: currentColor; }
+.partners img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+.geo { text-align: left; }
+.geo .countries { font: 400 clamp(44px, 8vw, 120px)/1 var(--serif); margin: 24px 0 48px; }
+.geo .countries span { display: block; }
+.geo .countries span:nth-child(2) { padding-left: 1.2em; }
+.geo .countries span:nth-child(3) { padding-left: 2.4em; }
+.delivery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid rgba(64,47,37,.2); padding-top: 28px; }
+.delivery h3 { font-size: 24px; margin-bottom: 6px; }
+.delivery p { color: var(--ink-soft); font-size: 15px; }
+
+.about { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 96px); }
+.about .since { font: 400 clamp(28px, 3vw, 36px)/1.25 var(--serif); }
+.about .values { display: grid; gap: 22px; }
+.about .values p { font-size: 17px; max-width: 54ch; }
+.about .values strong { font-weight: 500; }
+
+.cta { position: relative; background: var(--brown); color: var(--cream); overflow: hidden; --chip-on: var(--brown); }
+.dirs a { justify-self: end; }
+.cta .bg { position: absolute; right: 0; top: 0; height: 100%; width: 46%; object-fit: cover; opacity: .55;
+  mask-image: linear-gradient(90deg, transparent, #000 40%); -webkit-mask-image: linear-gradient(90deg, transparent, #000 40%); }
+.cta .wrap { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); }
+.cta .h2 { max-width: 11ch; }
+.cta .lead { color: rgba(246,239,229,.78); margin-top: 22px; }
+.cta .form { background: rgba(46,33,25,.55); padding: clamp(22px, 3vw, 40px); backdrop-filter: blur(2px); }
+
+.footer { padding: 40px 0 56px; }
+.footer .top { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid rgba(64,47,37,.2); }
+.footer .top img { height: 30px; width: auto; }
+.footer .cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 28px; font-size: 14px; color: var(--ink-soft); }
+.footer .cols a { text-decoration: none; display: block; margin-bottom: 6px; }
+.footer .cols a:hover { text-decoration: underline; }
+.footer strong { display: block; color: var(--brown); font-weight: 500; margin-bottom: 10px; }
+
+@media (max-width: 960px) {
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .delivery { grid-template-columns: repeat(2, 1fr); }
+  .quality, .partners .wrap, .about, .cta .wrap { grid-template-columns: 1fr; }
+  .cta .bg { width: 100%; opacity: .25; }
+  .footer .cols { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .header .logo img { height: 26px; }
+  .triad { grid-template-columns: 1fr; }
+  .triad a + a { border-left: 0; border-top: 1px solid rgba(64,47,37,.35); }
+  .dirs li { grid-template-columns: 1fr; gap: 8px; }
+  .stages li { grid-template-columns: 1fr; gap: 6px; }
+  .catalog-head { flex-direction: column; align-items: start; }
+  .hero::after { background: linear-gradient(0deg, rgba(46,33,25,.85) 0%, rgba(46,33,25,.35) 70%); }
+  .hero .wrap { justify-content: flex-end; padding-bottom: 48px; }
+  .geo .countries span:nth-child(n) { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="New Home Concept — на главную"><img src="../brand/logo/svg/logo-horizontal-brown.svg" alt="New Home Concept"></a>
+    <nav class="nav-desktop" aria-label="Основное меню">
+      <a href="#catalog">Каталог</a>
+      <a href="#directions">Комплектация</a>
+      <a href="#partners">Дизайнерам</a>
+      <a href="#about">О компании</a>
+    </nav>
+    <a class="link-cta nav-desktop" href="#contact">Обсудить проект</a>
+    <details class="menu-toggle">
+      <summary>Меню</summary>
+      <nav class="menu-panel" aria-label="Меню">
+        <a href="#catalog">Каталог</a><a href="#directions">Комплектация</a><a href="#partners">Дизайнерам</a><a href="#about">О компании</a><a href="#contact">Обсудить проект</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-label="Главный экран">
+    <img src="../assets/img/sofa-hero.jpg" alt="Диван в букле на ореховом цоколе и приставной столик в гостиной с травертином">
+    <div class="wrap">
+      <h1>Дом, собранный для вас</h1>
+      <p>Мебель, полы и комплектация квартир под ключ</p>
+      <a class="link-cta" href="#contact">Обсудить проект</a>
+    </div>
+  </section>
+
+  <section class="section plan" id="directions">
+    <div class="wrap">
+      <h2 class="h2">От планировки до готового дома</h2>
+      <img class="plan-photo" src="../assets/img/materials-plan.jpg" alt="Планировка квартиры, образец ореха, травертина и шерстяной ткани" loading="lazy">
+      <nav class="triad" aria-label="Главные направления">
+        <a href="#catalog">Мебель</a>
+        <a href="#floors">Материалы</a>
+        <a href="#directions-list">Комплектация</a>
+      </nav>
+
+      <ul class="dirs" id="directions-list">
+        <li><h3>Готовая мебель</h3><p>Диваны, кресла, кровати и столовые группы с поставкой из Китая, России и Европы.</p><a href="#catalog">Смотреть каталог</a></li>
+        <li><h3>Мебель на заказ</h3><p>Меняем размер, глубину посадки, ткань и оттенок дерева под ваш интерьер.</p><a href="#contact">Обсудить изделие</a></li>
+        <li id="floors"><h3>Полы и паркет</h3><p>Паркет собственного производства и инженерная доска.</p><a href="#contact">Подобрать пол</a></li>
+        <li><h3>Дизайн-проекты</h3><p>Интерьер от планировки и подбора материалов до спецификации.</p><a href="#contact">Заказать проект</a></li>
+        <li><h3>Комплектация</h3><p>Подбираем и привозим всё для квартиры: мебель, свет, текстиль и декор.</p><a href="#contact">Обсудить объект</a></li>
+        <li><h3>Ремонт под ключ</h3><p>Отделка квартиры силами одной команды, от черновых работ до расстановки мебели.</p><a href="#contact">Рассчитать ремонт</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="catalog" style="padding-top:0">
+    <div class="wrap">
+      <div class="catalog-head">
+        <h2 class="h2">Из каталога</h2>
+        <a class="link-cta" href="#">Весь каталог</a>
+      </div>
+      <div class="products">
+        <article class="product"><img src="../assets/img/living-room.jpg" alt="Трёхместный диван в светлом букле" loading="lazy"><h3>Диван трёхместный</h3><p>Букле, цоколь из ореха</p><a href="#contact">Запросить расчёт</a></article>
+        <article class="product"><img src="../assets/img/armchair.jpg" alt="Кресло в светлом букле" loading="lazy"><h3>Кресло</h3><p>Букле, глубокая посадка</p><a href="#contact">Запросить расчёт</a></article>
+        <article class="product"><img src="../assets/img/pedestal-table.jpg" alt="Столик из ореха на двух конических опорах" loading="lazy"><h3>Столик на двух опорах</h3><p>Массив ореха</p><a href="#contact">Запросить расчёт</a></article>
+        <article class="product"><img src="../assets/img/sofa-arch.jpg" alt="Диван с округлыми подлокотниками у арки" loading="lazy"><h3>Диван с округлыми формами</h3><p>Букле, размеры под проект</p><a href="#contact">Запросить расчёт</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap quality">
+      <img src="../assets/img/craftsman.jpg" alt="Мастер проверяет шов на обивке кресла" loading="lazy">
+      <div>
+        <h2 class="h2">Качество видно вблизи</h2>
+        <p class="lead" style="margin-top:22px">В том, как сходятся швы на углу, как лежит ткань на изгибе и как диван держит форму. Мы закрепляем эти требования в спецификации и принимаем изделие по утверждённому образцу.</p>
+        <ol class="stages">
+          <li><strong>До заказа</strong><p>Сравниваем предложения минимум двух фабрик, уточняем каркас, обивку и фурнитуру.</p></li>
+          <li><strong>На образце</strong><p>Проверяем посадку, геометрию, швы и оттенок. Утверждаем эталон и сохраняем фото.</p></li>
+          <li><strong>До отгрузки</strong><p>Сверяем изделие с эталоном и проверяем упаковку.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section partners" id="partners">
+    <div class="wrap">
+      <div>
+        <h2 class="h2">Дизайнерам и архитекторам</h2>
+        <p class="lead" style="margin-top:22px">Обсуждаем пропорции, материалы и детали исполнения на языке проекта.</p>
+        <ul>
+          <li>Образцы тканей, дерева и камня</li>
+          <li>Спецификация и расчёт комплектации</li>
+          <li>Изделия под размеры проекта</li>
+          <li>Ведение заказа от фабрики до объекта</li>
+        </ul>
+        <a class="link-cta" href="#contact">Стать партнёром</a>
+      </div>
+      <img src="../assets/img/materials.jpg" alt="Образцы букле, шерсти, травертина и ореха" loading="lazy">
+    </div>
+  </section>
+
+  <section class="section geo">
+    <div class="wrap">
+      <h2 class="h2">Производим и привозим</h2>
+      <p class="countries" aria-label="Китай, Россия, Европа"><span>Китай</span><span>Россия</span><span>Европа</span></p>
+      <div class="delivery">
+        <div><h3>Одним грузом</h3><p>Упаковываем заказ на фабрике и отправляем целиком, без лишних перегрузок.</p></div>
+        <div><h3>Авиа, море, ж/д</h3><p>Контейнеры 20 и 40 футов или грузовик по суше.</p></div>
+        <div><h3>Таможня</h3><p>Оформляем документы и отвечаем за целостность груза.</p></div>
+        <div><h3>До двери</h3><p>Привозим на ваш объект или наш склад. Расчёт делаем под ваш срок и бюджет.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" style="padding-top:0">
+    <div class="wrap about">
+      <p class="since">С&nbsp;2002 года помогаем сделать дом уютным, современным и надёжным на долгие годы.</p>
+      <div class="values">
+        <p><strong>Честно.</strong> Показываем только реальные изделия и отвечаем на неудобные вопросы.</p>
+        <p><strong>Рядом до конца сделки.</strong> Одна команда ведёт заказ от образца ткани до приёмки на объекте.</p>
+        <p><strong>Не оставляем в сложной ситуации.</strong> Гарантия на изделия и порядок работы с дефектами закреплены заранее.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta" id="contact">
+    <img class="bg" src="../assets/img/shadow-arch.jpg" alt="">
+    <div class="wrap">
+      <div>
+        <h2 class="h2">Расскажите о вашем проекте</h2>
+        <p class="lead">Ответим в течение рабочего дня, подготовим расчёт и подберём образцы.</p>
+      </div>
+      <form class="form" novalidate>
+        <div class="row">
+          <label class="field"><span>Имя</span><input name="name" autocomplete="name"></label>
+          <label class="field"><span>Телефон</span><input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <fieldset class="field" style="border:0;padding:0;margin:0"><legend style="font-size:13px;opacity:.8;margin-bottom:8px">Как удобнее связаться</legend>
+          <div class="chips">
+            <label><input type="radio" name="via" checked><span><em>Telegram</em></span></label>
+            <label><input type="radio" name="via"><span><em>WhatsApp</em></span></label>
+            <label><input type="radio" name="via"><span><em>Звонок</em></span></label>
+          </div>
+        </fieldset>
+        <label class="field"><span>Что нужно сделать</span><textarea name="msg" rows="3"></textarea></label>
+        <label class="file">Планировка или спецификация <input type="file"></label>
+        <label class="consent"><input type="checkbox" required> Соглашаюсь на обработку персональных данных</label>
+        <button class="submit" type="submit">Отправить заявку</button>
+        <p class="form-done" role="status">Заявка отправлена. Мы свяжемся с вами в течение рабочего дня.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="top">
+      <img src="../brand/logo/svg/logo-horizontal-brown.svg" alt="New Home Concept">
+      <a class="link-cta" href="#contact">Обсудить проект</a>
+    </div>
+    <div class="cols">
+      <div><strong>Направления</strong><a href="#catalog">Каталог мебели</a><a href="#directions-list">Мебель на заказ</a><a href="#floors">Полы и паркет</a><a href="#directions-list">Комплектация и ремонт</a></div>
+      <div><strong>Компания</strong><a href="#about">О нас</a><a href="#partners">Дизайнерам</a><a href="#">Доставка</a></div>
+      <div><strong>Связь</strong><a href="#">+7 (000) 000-00-00</a><a href="#">Telegram</a><a href="#">ВКонтакте</a></div>
+      <div><strong>ООО «Новый Дом»</strong><span>Москва</span><a href="#" style="margin-top:6px">Политика конфиденциальности</a></div>
+    </div>
+  </div>
+</footer>
+
+<p class="concept-note">Концепт A «Галерея». Фото временные, из референсов. <a href="../">Все варианты</a></p>
+<script src="../assets/form.js"></script>
+</body>
+</html>

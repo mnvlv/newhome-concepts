@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Концепции сайта — New Home Concept</title>
+<link rel="icon" href="brand/logo/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+@font-face { font-family: "Cormorant Garamond"; src: url("brand/fonts/CormorantGaramond%5Bwght%5D.ttf") format("truetype"); font-weight: 300 700; }
+.top { padding: 40px 0 0; }
+.top img { height: 34px; width: auto; }
+.intro { padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 5vw, 64px); display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+.intro h1 { font-size: clamp(44px, 6vw, 80px); font-weight: 400; }
+.intro p { color: var(--ink-soft); max-width: 48ch; }
+.intro p + p { margin-top: 12px; }
+
+.variants { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 56px); padding-bottom: clamp(64px, 8vw, 112px); }
+.variant a.shot { display: block; overflow: hidden; background: var(--limestone); box-shadow: 0 1px 0 rgba(64,47,37,.12), 0 18px 40px rgba(64,47,37,.10); }
+.variant a.shot img { width: 100%; aspect-ratio: 960 / 600; object-fit: cover; object-position: top; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.variant a.shot:hover img { transform: scale(1.02); }
+.variant h2 { font-size: clamp(30px, 3vw, 40px); margin-top: 26px; display: flex; gap: 14px; align-items: baseline; }
+.variant h2 small { font: 400 15px var(--sans); color: var(--ink-soft); }
+.variant p { color: var(--ink-soft); margin-top: 10px; max-width: 56ch; }
+.variant dl { display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px; margin: 18px 0 20px; font-size: 14px; }
+.variant dt { color: var(--ink-soft); }
+.variant dd { margin: 0; }
+
+.common { background: var(--limestone); padding: clamp(56px, 7vw, 96px) 0; }
+.common .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(32px, 6vw, 96px); }
+.common h2 { font-size: clamp(32px, 3.6vw, 48px); font-weight: 400; }
+.common ul { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 40px; }
+.common li { padding-top: 14px; border-top: 1px solid rgba(64,47,37,.2); font-size: 15px; }
+.common li strong { display: block; font: 500 20px/1.25 var(--serif); margin-bottom: 4px; }
+.swatches { display: flex; gap: 8px; margin-top: 10px; }
+.swatches span { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(64,47,37,.2); }
+footer { padding: 32px 0 48px; font-size: 13px; color: var(--ink-soft); }
+
+@media (max-width: 860px) {
+  .intro, .variants, .common .wrap, .common ul { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><img src="brand/logo/svg/logo-horizontal-brown.svg" alt="New Home Concept"></div></header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>Четыре концепции главной страницы</h1>
+    <div>
+      <p>Все варианты собраны из референсов заказчицы: макета главной, мудборда и палитры. Одна гамма, один шрифт логотипа, много фото и мало текста.</p>
+      <p>Различаются композиция и то, что посетитель видит первым: интерьер, каталог, путь «от планировки до дома» или атмосфера.</p>
+    </div>
+  </section>
+
+  <section class="variants" aria-label="Варианты">
+    <article class="variant">
+      <a class="shot" href="a-gallery/"><img src="assets/previews/a-gallery.jpg" alt="Первый экран варианта A"></a>
+      <h2>Галерея <small>Вариант A</small></h2>
+      <p>Прямое развитие макета заказчицы. Интерьер на весь экран, крупная антиква, подчёркнутые текстовые ссылки. Ведёт по всем направлениям по очереди.</p>
+      <dl><dt>Первым видно</dt><dd>Гостиная и обещание «дом, собранный для вас»</dd><dt>Подходит, если</dt><dd>Главное — образ бренда и все услуги на одной странице</dd></dl>
+      <a class="link-cta" href="a-gallery/">Открыть вариант A</a>
+    </article>
+    <article class="variant">
+      <a class="shot" href="b-showcase/"><img src="assets/previews/b-showcase.jpg" alt="Первый экран варианта B"></a>
+      <h2>Витрина <small>Вариант B</small></h2>
+      <p>Каталог с первого экрана: полоса категорий, мозаика фото, фильтр по стране производства. Отвечает на запрос «в одной вкладке много фото, минимум текста».</p>
+      <dl><dt>Первым видно</dt><dd>Категории мебели и новинки</dd><dt>Подходит, если</dt><dd>Главная задача — продажи и заявки на расчёт</dd></dl>
+      <a class="link-cta" href="b-showcase/">Открыть вариант B</a>
+    </article>
+    <article class="variant">
+      <a class="shot" href="c-portal/"><img src="assets/previews/c-portal.jpg" alt="Первый экран варианта C"></a>
+      <h2>Проём <small>Вариант C</small></h2>
+      <p>Знак логотипа, вложенные П-рамки, становится рамкой для фотографий. Симметрия и центральная ось. При загрузке рамки «вырастают» из линии пола.</p>
+      <dl><dt>Первым видно</dt><dd>Слоган бренда и три предмета в проёмах</dd><dt>Подходит, если</dt><dd>Хочется самого узнаваемого, «фирменного» сайта</dd></dl>
+      <a class="link-cta" href="c-portal/">Открыть вариант C</a>
+    </article>
+    <article class="variant">
+      <a class="shot" href="d-evening/"><img src="assets/previews/d-evening.jpg" alt="Первый экран варианта D"></a>
+      <h2>Вечер <small>Вариант D</small></h2>
+      <p>Инверсия палитры: глубокий коричневый фон и кремовый текст. В гостиной на первом экране медленно «включается свет». В центре — первая коллекция, капсула для гостиной.</p>
+      <dl><dt>Первым видно</dt><dd>Атмосфера и собственная коллекция</dd><dt>Подходит, если</dt><dd>Акцент на премиальность и работу с дизайнерами</dd></dl>
+      <a class="link-cta" href="d-evening/">Открыть вариант D</a>
+    </article>
+  </section>
+</main>
+
+<section class="common" aria-labelledby="common-h">
+  <div class="wrap">
+    <h2 id="common-h">Общее для всех вариантов</h2>
+    <ul>
+      <li><strong>Палитра бренда</strong>Кремовый фон и коричневый текст, плюс известняк, песок и орех из презентации.
+        <div class="swatches" aria-hidden="true"><span style="background:#F6EFE5"></span><span style="background:#EAE0D2"></span><span style="background:#CDB89C"></span><span style="background:#6B4A33"></span><span style="background:#402F25"></span><span style="background:#2E2119"></span></div></li>
+      <li><strong>Шрифты</strong>Cormorant Garamond, как в логотипе, для заголовков. Manrope для текста. Обе гарнитуры бесплатные, с кириллицей.</li>
+      <li><strong>Фото</strong>Сейчас стоят изображения из мудборда. На сайте в каталоге и портфолио будут только реальные фото, ИИ-картинки — только для атмосферы.</li>
+      <li><strong>Заявка</strong>Имя, телефон, что нужно, планировка или фото и согласие на обработку данных. Данные хранятся в России.</li>
+      <li><strong>Телефон</strong>Все варианты адаптированы под мобильные: меню сворачивается, сетки перестраиваются в одну колонку.</li>
+      <li><strong>Тексты</strong>Взяты из концепции и анкеты заказчицы, к клиенту только на «Вы». Без упоминаний итальянских фабрик.</li>
+    </ul>
+  </div>
+</section>
+
+<footer><div class="wrap">Концепции для обсуждения. Фото временные, из референсов заказчицы.</div></footer>
+</body>
+</html>
