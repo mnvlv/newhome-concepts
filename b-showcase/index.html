@@ -63,7 +63,7 @@
 
 .projects { background: var(--brown); color: var(--cream); }
 .projects .lead { color: rgba(246,239,229,.75); max-width: 40ch; margin-top: 10px; }
-.rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 38%); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+.rail { display: grid; grid-auto-flow: column; grid-auto-columns: max(280px, 38%); gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
   padding-bottom: 14px; scrollbar-color: rgba(246,239,229,.4) transparent; }
 .rail figure { margin: 0; scroll-snap-align: start; }
 .rail img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
@@ -111,7 +111,7 @@
 }
 </style>
 </head>
-<body>
+<body data-variant="b">
 <a class="skip" href="#main">К содержимому</a>
 
 <header class="header">
@@ -266,5 +266,6 @@ document.querySelectorAll('.filters button').forEach(function (b) {
   });
 });
 </script>
+<script src="../assets/motion.js"></script>
 </body>
 </html>

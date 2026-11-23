@@ -30,6 +30,23 @@
 .variant dt { color: var(--ink-soft); }
 .variant dd { margin: 0; }
 
+.variant .links { display: flex; flex-wrap: wrap; gap: 12px 28px; }
+
+.motion { border-top: 1px solid rgba(64,47,37,.16); padding: clamp(56px, 7vw, 96px) 0 clamp(64px, 8vw, 112px); }
+.motion-head { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(32px, 6vw, 96px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+.motion-head h2 { font-size: clamp(32px, 3.6vw, 48px); font-weight: 400; }
+.motion-head p { color: var(--ink-soft); max-width: 60ch; }
+.motion-head p + p { margin-top: 10px; }
+.motion-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(28px, 3vw, 44px); }
+.motion-grid article { border-top: 1px solid var(--brown); padding-top: 18px; display: flex; flex-direction: column; }
+.motion-grid h3 { font: 500 26px/1.15 var(--serif); }
+.motion-grid h3 small { font: 400 14px var(--sans); color: var(--ink-soft); margin-left: 8px; }
+.motion-grid .idea { font: italic 400 19px/1.35 var(--serif); margin: 10px 0 16px; }
+.motion-grid ul { font-size: 14px; flex: 1; }
+.motion-grid li { padding: 9px 0; border-top: 1px solid rgba(64,47,37,.14); }
+.motion-grid .link-cta { margin-top: 20px; align-self: start; }
+.motion-rules { display: flex; flex-wrap: wrap; gap: 10px 40px; margin-top: clamp(40px, 5vw, 56px); font-size: 14px; color: var(--ink-soft); }
+
 .common { background: var(--limestone); padding: clamp(56px, 7vw, 96px) 0; }
 .common .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(32px, 6vw, 96px); }
 .common h2 { font-size: clamp(32px, 3.6vw, 48px); font-weight: 400; }
@@ -41,8 +58,10 @@
 footer { padding: 32px 0 48px; font-size: 13px; color: var(--ink-soft); }
 
 @media (max-width: 860px) {
-  .intro, .variants, .common .wrap, .common ul { grid-template-columns: 1fr; }
+  .intro, .variants, .common .wrap, .common ul, .motion-head { grid-template-columns: 1fr; }
 }
+@media (max-width: 1100px) { .motion-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .motion-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -63,29 +82,92 @@ footer { padding: 32px 0 48px; font-size: 13px; color: var(--ink-soft); }
       <h2>Галерея <small>Вариант A</small></h2>
       <p>Прямое развитие макета заказчицы. Интерьер на весь экран, крупная антиква, подчёркнутые текстовые ссылки. Ведёт по всем направлениям по очереди.</p>
       <dl><dt>Первым видно</dt><dd>Гостиная и обещание «дом, собранный для вас»</dd><dt>Подходит, если</dt><dd>Главное — образ бренда и все услуги на одной странице</dd></dl>
-      <a class="link-cta" href="a-gallery/">Открыть вариант A</a>
+      <div class="links"><a class="link-cta" href="a-gallery/">Открыть вариант A</a><a class="link-cta" href="a-gallery/?motion">С анимацией</a></div>
     </article>
     <article class="variant">
       <a class="shot" href="b-showcase/"><img src="assets/previews/b-showcase.jpg" alt="Первый экран варианта B"></a>
       <h2>Витрина <small>Вариант B</small></h2>
       <p>Каталог с первого экрана: полоса категорий, мозаика фото, фильтр по стране производства. Отвечает на запрос «в одной вкладке много фото, минимум текста».</p>
       <dl><dt>Первым видно</dt><dd>Категории мебели и новинки</dd><dt>Подходит, если</dt><dd>Главная задача — продажи и заявки на расчёт</dd></dl>
-      <a class="link-cta" href="b-showcase/">Открыть вариант B</a>
+      <div class="links"><a class="link-cta" href="b-showcase/">Открыть вариант B</a><a class="link-cta" href="b-showcase/?motion">С анимацией</a></div>
     </article>
     <article class="variant">
       <a class="shot" href="c-portal/"><img src="assets/previews/c-portal.jpg" alt="Первый экран варианта C"></a>
       <h2>Проём <small>Вариант C</small></h2>
       <p>Знак логотипа, вложенные П-рамки, становится рамкой для фотографий. Симметрия и центральная ось. При загрузке рамки «вырастают» из линии пола.</p>
       <dl><dt>Первым видно</dt><dd>Слоган бренда и три предмета в проёмах</dd><dt>Подходит, если</dt><dd>Хочется самого узнаваемого, «фирменного» сайта</dd></dl>
-      <a class="link-cta" href="c-portal/">Открыть вариант C</a>
+      <div class="links"><a class="link-cta" href="c-portal/">Открыть вариант C</a><a class="link-cta" href="c-portal/?motion">С анимацией</a></div>
     </article>
     <article class="variant">
       <a class="shot" href="d-evening/"><img src="assets/previews/d-evening.jpg" alt="Первый экран варианта D"></a>
       <h2>Вечер <small>Вариант D</small></h2>
       <p>Инверсия палитры: глубокий коричневый фон и кремовый текст. В гостиной на первом экране медленно «включается свет». В центре — первая коллекция, капсула для гостиной.</p>
       <dl><dt>Первым видно</dt><dd>Атмосфера и собственная коллекция</dd><dt>Подходит, если</dt><dd>Акцент на премиальность и работу с дизайнерами</dd></dl>
-      <a class="link-cta" href="d-evening/">Открыть вариант D</a>
+      <div class="links"><a class="link-cta" href="d-evening/">Открыть вариант D</a><a class="link-cta" href="d-evening/?motion">С анимацией</a></div>
     </article>
+  </section>
+
+  <section class="motion" aria-labelledby="motion-h">
+    <div class="motion-head">
+      <h2 id="motion-h">Анимация</h2>
+      <div>
+        <p>У каждого варианта свой характер движения, он продолжает идею композиции. Анимация не мешает читать и выбирать: один заметный момент при загрузке, остальное отвечает на прокрутку и наведение.</p>
+        <p>Ссылка «С анимацией» открывает вариант с движением, выключить его можно ссылкой в плашке внизу страницы.</p>
+      </div>
+    </div>
+    <div class="motion-grid">
+      <article>
+        <h3>Галерея<small>A</small></h3>
+        <p class="idea">Как в выставочном зале: сначала фото, потом слова.</p>
+        <ul>
+          <li>Заголовок первого экрана поднимается по словам, когда фото уже на месте</li>
+          <li>Крупные фото открываются шторкой при прокрутке</li>
+          <li>Китай, Россия и Европа расходятся в стороны вместе с прокруткой</li>
+          <li>Шапка прячется при прокрутке вниз и возвращается при движении вверх</li>
+          <li>Ссылки подчёркиваются линией при наведении</li>
+        </ul>
+        <a class="link-cta" href="a-gallery/?motion">Открыть A с анимацией</a>
+      </article>
+      <article>
+        <h3>Витрина<small>B</small></h3>
+        <p class="idea">Движение помогает выбирать, а&nbsp;не&nbsp;украшает.</p>
+        <ul>
+          <li>Мозаика новинок открывается плитка за плиткой</li>
+          <li>В полосе категорий за курсором скользит линия-указатель</li>
+          <li>При фильтре по стране карточки плавно перестраиваются, а не прыгают</li>
+          <li>Ленту интерьеров можно тянуть мышью, линия снизу показывает, сколько осталось</li>
+          <li>Фото товара слегка приближается при наведении</li>
+        </ul>
+        <a class="link-cta" href="b-showcase/?motion">Открыть B с анимацией</a>
+      </article>
+      <article>
+        <h3>Проём<small>C</small></h3>
+        <p class="idea">Рамки знака логотипа ведут и&nbsp;в&nbsp;движении.</p>
+        <ul>
+          <li>Рамки проёмов вырастают из линии пола, когда доходят до экрана</li>
+          <li>При наведении на направление рамки расходятся, будто открывается дверь</li>
+          <li>Линия проходит через шаги 1–6 вместе с прокруткой, пройденные шаги проявляются</li>
+          <li>После отправки заявки рамки заново вырастают вокруг благодарности</li>
+        </ul>
+        <a class="link-cta" href="c-portal/?motion">Открыть C с анимацией</a>
+      </article>
+      <article>
+        <h3>Вечер<small>D</small></h3>
+        <p class="idea">Свет — сюжет всей страницы.</p>
+        <ul>
+          <li>Заголовок проявляется, когда в гостиной «включается свет»</li>
+          <li>Наведение на предмет капсулы меняет большое фото</li>
+          <li>Над списком направлений за курсором плывёт крупное превью</li>
+          <li>Кремовый блок «рассветает» при прокрутке, цитата загорается по словам</li>
+        </ul>
+        <a class="link-cta" href="d-evening/?motion">Открыть D с анимацией</a>
+      </article>
+    </div>
+    <div class="motion-rules">
+      <span>Плавное замедление, без подпрыгиваний и вращений</span>
+      <span>На телефоне — только эффекты от прокрутки</span>
+      <span>При системной настройке «Уменьшить движение» анимация не запускается</span>
+    </div>
   </section>
 </main>
 
