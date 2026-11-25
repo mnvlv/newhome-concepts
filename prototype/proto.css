@@ -144,7 +144,7 @@
 .how p { color: var(--ink-soft); font-size: 15px; }
 
 /* 3. Путь и миссия */
-.mission .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: start; }
+.mission .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 96px); align-items: center; }
 .mission .quote { font: 400 clamp(38px, 4.8vw, 68px)/1.06 var(--serif); }
 .mission .quote small { display: block; font: 400 15px/1.6 var(--sans); color: var(--ink-soft); margin-top: 22px; max-width: 40ch; }
 .mission img { width: 100%; aspect-ratio: 757 / 400; object-fit: cover; margin-top: 36px; }
