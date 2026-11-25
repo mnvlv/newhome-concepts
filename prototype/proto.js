@@ -138,7 +138,7 @@
       '<div><strong>Компания</strong><a href="index.html#about">О компании</a><a href="index.html#partners">Дизайнерам и архитекторам</a><a href="index.html#geo">Производство и доставка</a><a href="index.html#contact">Проекты</a></div>' +
       '<div><strong>Контакты</strong><a href="tel:+70000000000">+7 (000) 000-00-00</a><a href="mailto:info@newhome.example">info@newhome.example</a><a href="#">Telegram</a><a href="#">WhatsApp</a><a href="https://2gis.ru/moscow" target="_blank" rel="noopener">Москва, карта 2ГИС</a></div>' +
       '</div><div class="legal"><span>ООО «Новый Дом», с 2002 года</span>' +
-      '<span><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку персональных данных</a> · <a href="cookies.html">Политика cookie</a></span></div></div>';
+      '<span><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку персональных данных</a> · <a href="cookies.html">Политика cookie</a> · <button type="button" class="cookie-open">Настройки cookie</button></span></div></div>';
   }
 
   var page = document.body.getAttribute('data-page');
@@ -703,6 +703,49 @@
     });
     show();
   })();
+
+  // Окно согласия на cookie. Выбор хранится год, счётчик аналитики подключается только после «Принять»
+  var CK = 'nh-cookie-v1';
+  function cookieChoice() {
+    try { var c = JSON.parse(localStorage.getItem(CK)); if (c && Date.now() - c.at < 365 * 864e5) return c; } catch (e) {}
+    return null;
+  }
+  function loadAnalytics() {
+    // На боевом сайте здесь подключается Яндекс Метрика. При отказе после согласия её cookie (_ym_*) удаляются.
+    document.documentElement.setAttribute('data-analytics', 'on');
+  }
+  function cookieBar() {
+    var old = document.querySelector('.cookie');
+    if (old) return old;
+    var c = cookieChoice();
+    var bar = document.createElement('section');
+    bar.className = 'cookie';
+    bar.setAttribute('aria-label', 'Согласие на cookie');
+    bar.innerHTML = '<p>Мы используем cookie. Необходимые нужны, чтобы работали корзина и избранное. Аналитические помогают понять, что улучшить на сайте. Подробнее в <a href="cookies.html">политике cookie</a>.</p>' +
+      (c ? '<p class="cookie-now">Сейчас: ' + (c.analytics ? 'разрешены все cookie' : 'только необходимые') + '.</p>' : '') +
+      '<div class="cookie-act"><button type="button" class="btn" data-ck="all">Принять</button>' +
+      '<button type="button" class="cookie-min" data-ck="min">Только необходимые</button></div>';
+    document.body.appendChild(bar);
+    document.body.classList.add('has-cookie');
+    void bar.offsetWidth; // фиксируем начальное положение, чтобы окно плавно выехало
+    bar.classList.add('in');
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-ck]');
+      if (!b) return;
+      var all = b.getAttribute('data-ck') === 'all';
+      try { localStorage.setItem(CK, JSON.stringify({ analytics: all, at: Date.now() })); } catch (err) {}
+      if (all) loadAnalytics(); else document.documentElement.removeAttribute('data-analytics');
+      bar.remove();
+      document.body.classList.remove('has-cookie');
+    });
+    return bar;
+  }
+  var ck = cookieChoice();
+  if (ck) { if (ck.analytics) loadAnalytics(); } else cookieBar();
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.cookie-open')) return;
+    cookieBar().querySelector('[data-ck]').focus();
+  });
 
   function plural(n, f) { var a = n % 10, b = n % 100; return f[a === 1 && b !== 11 ? 0 : a >= 2 && a <= 4 && (b < 10 || b >= 20) ? 1 : 2]; }
 })();
