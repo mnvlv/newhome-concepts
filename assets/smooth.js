@@ -57,6 +57,10 @@
 
   var s = document.createElement('script');
   s.src = 'https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js';
+  // Проверка целостности: если CDN отдаст изменённый файл, браузер его не выполнит (останется обычная прокрутка)
+  s.integrity = 'sha384-R18XzqnxvVLEF+BYfhpmDx30v7eP83fAckyfoRzK7/Uf6nGqufcmsk0eAKo7S3RU';
+  s.crossOrigin = 'anonymous';
+  s.referrerPolicy = 'no-referrer';
   s.async = true;
   s.onload = init;
   document.head.appendChild(s);
