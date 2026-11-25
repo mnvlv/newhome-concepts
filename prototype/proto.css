@@ -240,9 +240,17 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
 
 /* 7. Производим и привозим */
 /* Блок из варианта A: страны лесенкой, при прокрутке въезжают с разных сторон */
+.quality .wrap { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+.quality ol { counter-reset: q; border-top: 1px solid var(--line-strong); }
+.quality li { counter-increment: q; display: grid; grid-template-columns: 56px 1fr; column-gap: 20px; padding: 24px 0 26px; border-bottom: 1px solid var(--line); }
+.quality li::before { content: counter(q); grid-row: span 2; font: 400 40px/1 var(--serif); color: var(--walnut); }
+.quality h3 { font-size: 26px; margin-bottom: 6px; }
+.quality p { color: var(--ink-soft); font-size: 15px; max-width: 54ch; }
+
 .geo { overflow-x: clip; }
 .geo .countries { font: 400 clamp(44px, 8vw, 120px)/1 var(--serif); margin: 24px 0 48px; }
-.geo .countries span { display: block; }
+.geo .countries span { display: flex; align-items: baseline; gap: .5em; }
+.geo .countries small { font: 400 15px/1.4 var(--sans); color: var(--ink-soft); max-width: 26ch; }
 .geo .countries span:nth-child(2) { padding-left: 1.2em; }
 .geo .countries span:nth-child(3) { padding-left: 2.4em; }
 .geo .delivery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid rgba(64,47,37,.2); padding-top: 28px; }
@@ -379,7 +387,7 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
 @media (max-width: 1000px) {
   .tiles { grid-template-columns: repeat(3, 1fr); }
   .goods { grid-template-columns: repeat(2, 1fr); }
-  .mission .wrap, .capsule .wrap, .partners .wrap, .about .wrap, .contact .wrap, .pdp, .cart { grid-template-columns: 1fr; }
+  .mission .wrap, .capsule .wrap, .partners .wrap, .quality .wrap, .about .wrap, .contact .wrap, .pdp, .cart { grid-template-columns: 1fr; }
   .geo .delivery { grid-template-columns: 1fr 1fr; }
   .footer .cols { grid-template-columns: 1fr 1fr; }
   .side { position: static; }
@@ -394,6 +402,9 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
   .how ol { grid-template-columns: 1fr; }
   .geo .delivery { grid-template-columns: 1fr 1fr; }
   .geo .countries span:nth-child(n) { padding-left: 0; }
+  .geo .countries span { flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .quality li { grid-template-columns: 40px 1fr; column-gap: 14px; }
+  .quality li::before { font-size: 32px; }
   .head { flex-direction: column; align-items: start; }
   .mission .path li { grid-template-columns: 36px 1fr; }
   .mission .path span { grid-column: 2; text-align: left; }
