@@ -354,9 +354,18 @@
     });
   }
 
+  // ---------- Рамки проёма у фото (из варианта C): вырастают, когда фото доходит до экрана ----------
+  var portals = document.querySelectorAll('.portal');
+  var motionOn = !/[?&](static|motion=(0|off))\b/.test(location.search) && !reduce;
+  if (portals.length && motionOn && 'IntersectionObserver' in window) {
+    var pObs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('p-in'); pObs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -18% 0px' });
+    portals.forEach(function (p) { p.classList.add('p-watch'); pObs.observe(p); });
+  }
+
   // ---------- «Производим и привозим» (из варианта A): страны въезжают с разных сторон и встают лесенкой ----------
   var geo = document.querySelector('.geo .countries');
-  var motionOn = !/[?&](static|motion=(0|off))\b/.test(location.search) && !reduce;
   if (geo && motionOn) {
     var gSpans = geo.querySelectorAll('span'), gFrom = [-1, 1, -1], gTick = 0;
     var gUpdate = function () {
