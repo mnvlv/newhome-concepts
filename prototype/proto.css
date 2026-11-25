@@ -3,6 +3,21 @@
 
 :root { --line: rgba(64,47,37,.16); --line-strong: rgba(64,47,37,.3); }
 
+/* Фон-подложка цвета известняка: блоки «Дизайнерам и архитекторам» и «О компании» */
+.tinted { background: var(--limestone); }
+
+/* Полосы прокрутки в фирменных цветах: тонкий ползунок цвета ореха на прозрачной дорожке */
+* { scrollbar-width: thin; scrollbar-color: rgba(107,74,51,.55) transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(107,74,51,.55); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background-color: #6B4A33; }
+.dark, .dark * { scrollbar-color: rgba(246,239,229,.45) transparent; }
+.dark ::-webkit-scrollbar-thumb { background-color: rgba(246,239,229,.45); }
+/* На главной полосу прокрутки страницы не показываем */
+html:has(body[data-page="home"]) { scrollbar-width: none; }
+html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
+
 /* ---------- Шапка ---------- */
 .header { position: sticky; top: 0; z-index: 40; background: rgba(246,239,229,.96); backdrop-filter: blur(8px); }
 .util { font-size: 13px; color: var(--ink-soft); border-bottom: 1px solid var(--line); }
