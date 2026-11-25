@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Корзина и избранное — New Home Concept</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../brand/logo/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="proto.css">
+</head>
+<body data-page="cart">
+<a class="skip" href="#main">К содержанию</a>
+<div data-header></div>
+
+<main id="main" class="wrap">
+  <nav class="tabs" aria-label="Списки">
+    <a href="cart.html" data-tab="cart">Корзина<sup data-n="cart"></sup></a>
+    <a href="cart.html#fav" data-tab="fav">Избранное<sup data-n="fav"></sup></a>
+  </nav>
+
+  <div id="pane-cart" class="cart">
+    <div class="lines" id="lines"></div>
+    <aside class="side" id="cart-side" aria-labelledby="cart-h">
+      <h2 id="cart-h">Запросить расчёт</h2>
+      <p class="lead">В запросе <span id="cart-sum"></span>. Менеджер пришлёт цену и срок по каждой позиции, оплачивать на сайте ничего не нужно.</p>
+      <form class="form" action="#" novalidate data-cart>
+        <label class="field"><span>Имя</span><input name="name" autocomplete="name" required></label>
+        <label class="field"><span>Телефон</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+        <details class="extra">
+          <summary>Добавить комментарий</summary>
+          <div class="inner"><label class="field"><span>Комментарий</span><textarea name="msg" rows="3" placeholder="Размер, срок, адрес доставки"></textarea></label></div>
+        </details>
+        <label class="consent"><input type="checkbox" name="consent"><span>Соглашаюсь на обработку персональных данных по <a href="#">политике конфиденциальности</a></span></label>
+        <p class="form-err" role="alert" style="color:#8A3B22;font-size:14px;margin:0"></p>
+        <button class="btn" type="submit">Отправить запрос</button>
+        <p class="form-done" role="status">Запрос отправлен. Менеджер свяжется с Вами в течение рабочего дня.</p>
+      </form>
+    </aside>
+  </div>
+
+  <div id="pane-fav" class="cart" hidden>
+    <div>
+      <p class="lead" id="fav-shared" hidden style="margin:10px 0 18px">Этим списком с Вами поделились. Его можно сохранить себе или сразу отправить в корзину.</p>
+      <div class="lines" id="fav-lines"></div>
+    </div>
+    <aside class="side" id="fav-side" aria-labelledby="fav-h">
+      <h2 id="fav-h">Избранное</h2>
+      <p class="lead">Список хранится в этом браузере, регистрация не нужна. Отправьте ссылку дизайнеру или близким, чтобы выбрать вместе.</p>
+      <div class="share">
+        <button class="btn" type="button" id="fav-copy">Скопировать ссылку</button>
+        <button class="btn ghost" type="button" id="fav-tocart">Всё в корзину</button>
+        <button class="btn ghost" type="button" id="fav-keep">Сохранить себе</button>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<p class="concept-note proto-note">Прототип корзины-запроса и избранного. Данные хранятся только в этом браузере.</p>
+<script src="proto.js"></script>
+</body>
+</html>

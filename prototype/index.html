@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прототип главной — New Home Concept</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../brand/logo/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="proto.css">
+</head>
+<body data-variant="b" data-page="home">
+<a class="skip" href="#main">К содержанию</a>
+<div data-header></div>
+
+<main id="main">
+  <!-- 1. Первый экран (B) -->
+  <div class="wrap mosaic">
+    <a class="big" href="#catalog">
+      <img src="../assets/img/sofa-arches.jpg" alt="Диван в букле на ореховом цоколе у каменной стены с арками">
+      <div class="title"><h1>Мебель под Ваш&nbsp;интерьер</h1></div>
+    </a>
+    <a href="product.html?id=armchair"><img src="../assets/img/armchair.jpg" alt="Кресло в букле"><span class="tag">Кресла</span></a>
+    <a href="product.html?id=table"><img src="../assets/img/pedestal-table.jpg" alt="Столик из ореха"><span class="tag">Столики</span></a>
+    <a href="product.html?id=sofa"><img src="../assets/img/fabric-corner.jpg" alt="Угол дивана: обивка и цоколь из ореха крупным планом"><span class="tag">Ткани и отделки</span></a>
+    <a href="#contact"><img src="../assets/img/brass-plate.jpg" alt="Латунный шильд со знаком на ореховом цоколе"><span class="tag">На заказ</span></a>
+  </div>
+
+  <!-- 2. Категории и каталог (B) -->
+  <section class="section" aria-labelledby="cats-h">
+    <div class="wrap">
+      <div class="head"><h2 class="h2" id="cats-h">Категории</h2></div>
+      <div class="tiles">
+        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/living-room.jpg" alt="" loading="lazy"></div><span>Диваны</span></a>
+        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/armchair.jpg" alt="" loading="lazy"></div><span>Кресла</span></a>
+        <a class="tile" href="#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Кровати</span></a>
+        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/pedestal-table.jpg" alt="" loading="lazy"></div><span>Столовые группы</span></a>
+        <a class="tile" href="#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Массажные кресла</span></a>
+        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/materials.jpg" alt="" loading="lazy"></div><span>Паркет и доска</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="catalog" style="padding-top:0" aria-labelledby="new-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="h2" id="new-h">Новое в каталоге</h2>
+        <div class="filters" role="group" aria-label="Страна производства">
+          <button type="button" aria-pressed="true" data-f="all">Все</button>
+          <button type="button" aria-pressed="false" data-f="cn">Китай</button>
+          <button type="button" aria-pressed="false" data-f="ru">Россия</button>
+          <button type="button" aria-pressed="false" data-f="eu">Европа</button>
+        </div>
+      </div>
+      <div class="goods" data-goods="sofa3,armchair,table,sofa,massage,parquet,bed,modular"></div>
+      <p class="more"><a class="link-cta" href="#catalog">Весь каталог</a></p>
+    </div>
+  </section>
+
+  <section class="section how" style="padding-top:0" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="head"><h2 class="h2" id="how-h">Как заказать</h2></div>
+      <ol>
+        <li><h3>Выберите</h3><p>Модель из каталога или фото предмета, который Вам нравится. Соберите несколько в корзину.</p></li>
+        <li><h3>Получите расчёт</h3><p>Цена, срок, образцы ткани и дерева до оплаты. На сайте платить ничего не нужно.</p></li>
+        <li><h3>Примите дома</h3><p>Доставим, соберём и проверим вместе с Вами.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. Миссия и путь (текст из A, блок из D) -->
+  <section class="section mission" style="background:var(--limestone)" aria-labelledby="path-h">
+    <div class="wrap">
+      <div>
+        <p class="quote">Красивая жизнь с&nbsp;Новым Домом
+          <small>Мебель на заказ для интерьеров среднего и высокого класса. Почти четверть века помогаем сделать дом уютным, надёжным и современным на долгие годы.</small></p>
+        <img src="../assets/img/interior-arches.jpg" alt="Гостиная с арками и диваном в букле" loading="lazy">
+      </div>
+      <div>
+        <h2 id="path-h">От планировки до готового дома</h2>
+        <ol class="path">
+          <li><b>1</b><strong>Планировка</strong><span>Замер и решение по зонам</span></li>
+          <li><b>2</b><strong>Дизайн-проект</strong><span>Стиль, материалы, спецификация</span></li>
+          <li><b>3</b><strong>Подбор</strong><span>Мебель, полы, свет и текстиль</span></li>
+          <li><b>4</b><strong>Образцы и расчёт</strong><span>Цена и срок до оплаты</span></li>
+          <li><b>5</b><strong>Производство</strong><span>Контроль по эталону</span></li>
+          <li><b>6</b><strong>Доставка и сборка</strong><span>Принимаем вместе с Вами</span></li>
+        </ol>
+        <p class="note">Можно прийти на любой этап. Можно доверить весь путь одной команде.</p>
+        <a class="link-cta" href="#contact">Обсудить проект</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Капсула (D), без смены кадров -->
+  <section class="section capsule" id="capsule" style="background:none" aria-labelledby="capsule-h">
+    <div class="wrap">
+      <div class="photo"><img src="../assets/img/living-room.jpg" alt="Гостиная: диван, кресло и столики из одной коллекции" loading="lazy"></div>
+      <div>
+        <h2 class="h2" id="capsule-h">Капсула для гостиной</h2>
+        <p class="lead">Первая собственная коллекция. Глубина посадки, высота, оттенок дерева и ткань подбираются под Ваш дом.</p>
+        <ul>
+          <li><a href="product.html?id=sofa"><img src="../assets/img/sofa-arch.jpg" alt="" loading="lazy"><div><h3>Диван</h3><p>Букле или шерсть, цоколь из ореха</p></div><em>7 тканей</em></a></li>
+          <li><a href="product.html?id=armchair"><img src="../assets/img/armchair.jpg" alt="" loading="lazy"><div><h3>Кресло</h3><p>Глубокая посадка, мягкие формы</p></div><em>7 тканей</em></a></li>
+          <li><a href="product.html?id=table"><img src="../assets/img/pedestal-table.jpg" alt="" loading="lazy"><div><h3>Столик на двух опорах</h3><p>Массив ореха</p></div><em>3 отделки</em></a></li>
+          <li><a href="#contact"><span class="ph"><img src="../brand/logo/svg/mark-cream.svg" alt=""></span><div><h3>Приставной столик</h3><p>Травертин и орех</p></div><em>Скоро</em></a></li>
+        </ul>
+        <a class="link-cta" href="#contact">Запросить образцы и расчёт</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. От одного кресла до нового дома (D) -->
+  <section class="section" id="directions" style="padding-top:0" aria-labelledby="dirs-h">
+    <div class="wrap">
+      <h2 class="h2" id="dirs-h">От одного кресла до нового дома</h2>
+      <div class="dirs">
+        <button type="button" data-cta="Обсудить мебель на заказ"><h3>Мебель на заказ</h3><p>Диваны, кровати, столовые группы под размеры проекта</p><img src="../assets/img/fabric-corner.jpg" alt="" data-alt="Угол дивана: обивка и цоколь из ореха" loading="lazy"></button>
+        <button type="button" data-cta="Подобрать кресло"><h3>Массажные кресла</h3><p>И кресла с подогревом для гостиной и кабинета</p><img class="mk" src="../brand/logo/svg/mark-brown.svg" alt="" data-alt="Фото добавим из каталога фабрики" loading="lazy"></button>
+        <button type="button" data-cta="Запросить образцы паркета"><h3>Полы и паркет</h3><p>Собственное производство паркета и инженерной доски</p><img src="../assets/img/materials.jpg" alt="" data-alt="Образцы паркета, камня и ткани" loading="lazy"></button>
+        <button type="button" data-cta="Обсудить дизайн-проект"><h3>Дизайн-проекты</h3><p>От планировки до спецификации</p><img src="../assets/img/materials-plan.jpg" alt="" data-alt="Планировка и образцы материалов" loading="lazy"></button>
+        <button type="button" data-cta="Обсудить комплектацию"><h3>Комплектация</h3><p>Всё для квартиры одной поставкой</p><img src="../assets/img/interior-arches.jpg" alt="" data-alt="Гостиная с арками" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Дизайнерам и архитекторам (C) -->
+  <section class="section partners" id="partners" style="padding-top:0" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="pic"><img src="../assets/img/craftsman.jpg" alt="Мастер проверяет шов на обивке кресла" loading="lazy"></div>
+      <div>
+        <h2 class="h2" id="partners-h">Дизайнерам и архитекторам</h2>
+        <ul>
+          <li><strong>Образцы материалов</strong><span>Ткани, дерево и камень в руках, а не на экране</span></li>
+          <li><strong>Спецификация и расчёт</strong><span>Готовим комплектацию на языке проекта</span></li>
+          <li><strong>Ведение до объекта</strong><span>Отвечаем за срок, приёмку и рекламации</span></li>
+        </ul>
+        <a class="link-cta" href="#contact">Стать партнёром</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Производим и привозим (A) -->
+  <section class="section geo" id="geo" aria-labelledby="geo-h">
+    <div class="wrap">
+      <h2 class="h2" id="geo-h">Производим и привозим</h2>
+      <p class="countries" aria-label="Китай, Россия, Европа"><span>Китай</span><span>Россия</span><span>Европа</span></p>
+      <div class="delivery">
+        <div><h3>Одним грузом</h3><p>Упаковываем заказ на фабрике и отправляем целиком, без лишних перегрузок.</p></div>
+        <div><h3>Авиа, море, ж/д</h3><p>Контейнеры 20 и 40 футов или грузовик по суше.</p></div>
+        <div><h3>Таможня</h3><p>Оформляем документы и отвечаем за целостность груза.</p></div>
+        <div><h3>До двери</h3><p>Привозим на Ваш объект или наш склад. Расчёт делаем под Ваш срок и бюджет.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. О компании (A) -->
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div>
+        <h2 class="h2" id="about-h" style="margin-bottom:22px">О компании</h2>
+        <p class="since">С&nbsp;2002 года помогаем сделать дом уютным, современным и надёжным на долгие годы.</p>
+      </div>
+      <div class="values">
+        <p><strong>Честно.</strong> Показываем только реальные изделия и отвечаем на неудобные вопросы.</p>
+        <p><strong>Рядом до конца сделки.</strong> Одна команда ведёт заказ от образца ткани до приёмки на объекте.</p>
+        <p><strong>Не оставляем в сложной ситуации.</strong> Гарантия на изделия и порядок работы с дефектами закреплены заранее.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Заявка (D) -->
+  <section class="section contact dark" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div>
+        <h2 class="h2" id="contact-h">Расскажите о Вашем доме</h2>
+        <p class="lead">Пришлите планировку или фото понравившейся мебели. Ответим в течение рабочего дня и предложим варианты из Китая, России и Европы.</p>
+        <div class="messengers"><a href="#">Написать в Telegram</a><a href="#">WhatsApp</a><a href="#">MAX</a></div>
+        <div class="reach">
+          <span>Телефон: <a href="tel:+70000000000">+7 (000) 000-00-00</a></span>
+          <span>E-mail: <a href="mailto:info@newhome.example">info@newhome.example</a></span>
+          <span>Шоурум: Москва, <a href="https://2gis.ru/moscow" target="_blank" rel="noopener">открыть на карте 2ГИС</a></span>
+        </div>
+      </div>
+      <form class="form" action="#" novalidate>
+        <div class="row">
+          <label class="field"><span>Имя</span><input name="name" autocomplete="name" required></label>
+          <label class="field"><span>Телефон</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+        </div>
+        <p class="req">Достаточно имени и телефона. Остальное можно рассказать по телефону.</p>
+        <fieldset class="field" style="border:0;padding:0;margin:0">
+          <span>Я</span>
+          <div class="chips">
+            <label><input type="radio" name="who" value="private"><span><em>Частный клиент</em></span></label>
+            <label><input type="radio" name="who" value="designer"><span><em>Дизайнер или архитектор</em></span></label>
+            <label><input type="radio" name="who" value="builder"><span><em>Комплектатор, строитель</em></span></label>
+          </div>
+        </fieldset>
+        <details class="extra">
+          <summary>Добавить комментарий</summary>
+          <div class="inner">
+            <label class="field"><span>Что ищете</span><textarea name="msg" rows="3"></textarea></label>
+            <label class="field"><span>E-mail</span><input name="email" type="email" autocomplete="email"></label>
+          </div>
+        </details>
+        <button class="attach" type="button">Прикрепить планировку или фото</button>
+        <input type="file" name="file" multiple accept="image/*,.pdf" hidden>
+        <span class="attach-name" aria-live="polite"></span>
+        <label class="consent"><input type="checkbox" name="consent"><span>Соглашаюсь на обработку персональных данных по <a href="#">политике конфиденциальности</a></span></label>
+        <p class="form-err" role="alert" style="color:#F2C9A8;font-size:14px;margin:0"></p>
+        <button class="submit" type="submit">Отправить заявку</button>
+        <p class="form-done" role="status">Спасибо. Свяжемся с Вами в течение рабочего дня.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div data-footer></div>
+
+<p class="concept-note proto-note">Прототип главной на основе варианта B. Фото временные. <a href="../">Все концепции</a> · <a href="product.html?id=armchair">Перекраска ткани</a></p>
+<script src="proto.js"></script>
+<script src="../assets/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карточка товара — New Home Concept</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../brand/logo/svg/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="proto.css">
+</head>
+<body data-page="product">
+<a class="skip" href="#main">К содержанию</a>
+<div data-header></div>
+
+<main id="main" class="wrap">
+  <nav class="crumbs" aria-label="Вы здесь"><a href="index.html">Главная</a> / <a href="index.html#catalog">Каталог</a> / <a id="p-cat" href="index.html#catalog"></a> / <span id="p-crumb" aria-current="page"></span></nav>
+
+  <div class="pdp">
+    <div>
+      <div class="stage">
+        <canvas id="p-canvas" role="img" aria-label="Фото товара в выбранной ткани"></canvas>
+        <canvas id="p-prev" aria-hidden="true" style="visibility:hidden"></canvas>
+        <div class="overlay" aria-hidden="true"></div>
+        <div class="sample" hidden><canvas></canvas><span></span></div>
+      </div>
+      <p class="viz-note" id="p-viz" hidden>Цвет на фото приблизительный, оттенок сверяйте по образцу ткани.</p>
+      <div class="thumbs" id="p-thumbs"></div>
+    </div>
+
+    <div>
+      <h1 id="p-name"></h1>
+      <p class="meta" id="p-meta"></p>
+      <p class="price">Цена по запросу<small>Пришлём расчёт с ценой и сроком под выбранную ткань и размер</small></p>
+
+      <div class="opt" id="p-fabric-opt">
+        <div class="opt-h"><b>Ткань</b><span id="p-fab-name"></span></div>
+        <div class="swatches" id="p-fabrics" role="group" aria-label="Ткань"></div>
+        <p class="mode" id="p-mode"></p>
+      </div>
+      <div class="opt" id="p-wood-opt">
+        <div class="opt-h"><b>Дерево</b></div>
+        <div class="chipset" id="p-woods" role="group" aria-label="Дерево"></div>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="button" id="p-add"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l-1 11.5h-11z"/><path d="M9 8.5V7a3 3 0 0 1 6 0v1.5"/></svg>В корзину</button>
+        <button class="btn ghost" type="button" id="p-fav" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></svg><span>В избранное</span></button>
+      </div>
+      <a class="custom" href="index.html#contact">Хочу такой, но под мой размер</a>
+
+      <dl class="specs">
+        <div><dt>Размеры</dt><dd id="p-size"></dd></div>
+        <div id="p-base-row"><dt>Основание</dt><dd id="p-base"></dd></div>
+        <div><dt>Производство</dt><dd id="p-country"></dd></div>
+        <div><dt>Срок изготовления</dt><dd id="p-term"></dd></div>
+        <div><dt>Образцы</dt><dd>Привезём ткань и дерево до оплаты</dd></div>
+      </dl>
+    </div>
+  </div>
+</main>
+
+<div data-footer></div>
+
+<p class="concept-note proto-note">Прототип карточки. Перекраска по маске работает у кресла и дивана с округлыми формами, у остальных тканевых моделей образец показан рядом с фото. <a href="product.html?id=armchair">Кресло</a>, <a href="product.html?id=sofa">диван</a>, <a href="product.html?id=sofa3">без маски</a></p>
+<script src="proto.js"></script>
+</body>
+</html>
