@@ -313,6 +313,26 @@
   });
   var it_animate = typeof Element.prototype.animate === 'function';
 
+  // ---------- «Производим и привозим» (из варианта A): страны въезжают с разных сторон и встают лесенкой ----------
+  var geo = document.querySelector('.geo .countries');
+  var motionOn = !/[?&](static|motion=(0|off))\b/.test(location.search) && !reduce;
+  if (geo && motionOn) {
+    var gSpans = geo.querySelectorAll('span'), gFrom = [-1, 1, -1], gTick = 0;
+    var gUpdate = function () {
+      gTick = 0;
+      var r = geo.getBoundingClientRect(), vh = window.innerHeight;
+      gSpans.forEach(function (s, i) {
+        var t = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.75) - i * 0.12)), e = 1 - Math.pow(1 - t, 3);
+        s.style.transform = 'translate3d(' + (gFrom[i] * (1 - e) * 38).toFixed(2) + 'vw,0,0)';
+        s.style.opacity = (0.1 + 0.9 * e).toFixed(3);
+      });
+    };
+    gSpans.forEach(function (s) { s.style.willChange = 'transform'; });
+    window.addEventListener('scroll', function () { if (!gTick) gTick = requestAnimationFrame(gUpdate); }, { passive: true });
+    window.addEventListener('resize', gUpdate);
+    gUpdate();
+  }
+
   // ---------- «От одного кресла до нового дома»: превью за курсором, по нажатию крупно ----------
   var dirs = document.querySelectorAll('.dirs button');
   if (dirs.length) {
