@@ -19,7 +19,7 @@
   ];
   var WOODS = ['Орех', 'Дуб натуральный', 'Ясень тонированный'];
   // Участок ткани для образцов: светлое букле с фото кресла
-  var TEXTURE = { photo: IMG + 'armchair.jpg', rect: [60, 224, 44, 44] };
+  var TEXTURE = { photo: IMG + 'armchair.jpg', rect: [0.148, 0.549, 0.108, 0.108] };
 
   var PRODUCTS = {
     armchair: { name: 'Кресло с глубокой посадкой', cat: 'Кресла', c: 'cn', photo: 'armchair.jpg', mask: 'img/armchair-mask.png',
@@ -28,7 +28,7 @@
     sofa: { name: 'Диван с округлыми формами', cat: 'Диваны', c: 'eu', photo: 'sofa-arch.jpg', mask: 'img/sofa-arch-mask.png',
       fabric: true, wood: true, size: '260 × 105 × 72 см', term: '60–75 дней', base: 'Цоколь из массива',
       alt: 'Диван в букле с округлыми подлокотниками у арки' },
-    sofa3: { name: 'Диван трёхместный', cat: 'Диваны', c: 'cn', photo: 'living-room.jpg', fabric: true, wood: true,
+    sofa3: { name: 'Диван трёхместный', cat: 'Диваны', c: 'cn', photo: 'living-room.jpg', mask: 'img/living-room-mask.png', fabric: true, wood: true,
       size: '280 × 100 × 70 см', term: '45–60 дней', base: 'Цоколь из массива', alt: 'Трёхместный диван в букле' },
     table: { name: 'Столик на двух опорах', cat: 'Столики', c: 'ru', photo: 'pedestal-table.jpg', wood: true,
       size: '120 × 60 × 40 см', term: '30–40 дней', alt: 'Столик из ореха на двух опорах' },
@@ -38,7 +38,7 @@
       term: '20–30 дней', note: 'Собственное производство', alt: 'Образцы паркета и материалов' },
     bed: { name: 'Кровать с мягким изголовьем', cat: 'Кровати', c: 'cn', photo: null, fabric: true, size: '180 × 200 см',
       term: '45–60 дней', note: 'Фото добавим из каталога фабрики' },
-    modular: { name: 'Модульный диван', cat: 'Диваны', c: 'eu', photo: 'fabric-corner.jpg', fabric: true, wood: true,
+    modular: { name: 'Модульный диван', cat: 'Диваны', c: 'eu', photo: 'fabric-corner.jpg', mask: 'img/fabric-corner-mask.png', fabric: true, wood: true,
       size: 'модули от 90 см', term: '60–75 дней', alt: 'Деталь обивки модульного дивана' }
   };
   var COUNTRY = { cn: 'Китай', ru: 'Россия', eu: 'Европа' };
@@ -213,15 +213,17 @@
     var key = photo + '|' + (mask || '') + '|' + (rect || '');
     if (prepCache[key]) return prepCache[key];
     prepCache[key] = Promise.all([loadImg(photo), mask ? loadImg(mask) : null]).then(function (r) {
-      var im = r[0], sx = 0, sy = 0, w = im.naturalWidth, h = im.naturalHeight;
-      if (rect) { sx = rect[0]; sy = rect[1]; w = rect[2]; h = rect[3]; }
+      // rect — доли размера фото, маска растягивается под фото: так всё работает при любом разрешении файлов
+      var im = r[0], W = im.naturalWidth, H = im.naturalHeight, sx = 0, sy = 0, w = W, h = H;
+      if (rect) { sx = Math.round(rect[0] * W); sy = Math.round(rect[1] * H); w = Math.round(rect[2] * W); h = Math.round(rect[3] * H); }
       var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
       var ctx = cv.getContext('2d', { willReadFrequently: true });
       ctx.drawImage(im, sx, sy, w, h, 0, 0, w, h);
       var base = ctx.getImageData(0, 0, w, h); // на file:// бросит ошибку — тогда работает запасной вариант
       var alpha = new Float32Array(w * h);
       if (r[1]) {
-        ctx.clearRect(0, 0, w, h); ctx.drawImage(r[1], sx, sy, w, h, 0, 0, w, h);
+        var mx = r[1].naturalWidth / W, my = r[1].naturalHeight / H;
+        ctx.clearRect(0, 0, w, h); ctx.drawImage(r[1], sx * mx, sy * my, w * mx, h * my, 0, 0, w, h);
         var md = ctx.getImageData(0, 0, w, h).data;
         for (var k = 0; k < alpha.length; k++) alpha[k] = md[k * 4] / 255;
       } else alpha.fill(1);
