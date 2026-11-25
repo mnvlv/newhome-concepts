@@ -138,7 +138,7 @@
       '<div><strong>Компания</strong><a href="index.html#about">О компании</a><a href="index.html#partners">Дизайнерам и архитекторам</a><a href="index.html#geo">Производство и доставка</a><a href="index.html#contact">Проекты</a></div>' +
       '<div><strong>Контакты</strong><a href="tel:+70000000000">+7 (000) 000-00-00</a><a href="mailto:info@newhome.example">info@newhome.example</a><a href="#">Telegram</a><a href="#">WhatsApp</a><a href="https://2gis.ru/moscow" target="_blank" rel="noopener">Москва, карта 2ГИС</a></div>' +
       '</div><div class="legal"><span>ООО «Новый Дом», с 2002 года</span>' +
-      '<span><a href="#">Политика конфиденциальности</a> · <a href="#">Согласие на обработку персональных данных</a> · <a href="#">Политика cookie</a></span></div></div>';
+      '<span><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку персональных данных</a> · <a href="cookies.html">Политика cookie</a></span></div></div>';
   }
 
   var page = document.body.getAttribute('data-page');

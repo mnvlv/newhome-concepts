@@ -68,6 +68,7 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
 .burger { display: none; }
 /* Категория каталога, выбранная в меню шапки */
 #catalog { scroll-margin-top: 136px; }
+
 @media (max-width: 560px) { #catalog { scroll-margin-top: 96px; } }
 .cat-on, .cat-empty { margin: -14px 0 26px; font-size: 15px; color: var(--ink-soft); }
 .cat-on[hidden], .cat-empty[hidden] { display: none; }
@@ -404,4 +405,47 @@ html:has(body[data-page="home"])::-webkit-scrollbar { display: none; }
   .line .ctl { grid-column: 2; flex-direction: row; align-items: center; justify-content: space-between; }
   .specs div { grid-template-columns: 1fr; gap: 2px; }
   .proto-note { max-width: calc(100% - 24px); }
+}
+
+/* Документы: политика, согласие, cookie */
+.doc { padding-bottom: clamp(64px, 9vw, 120px); }
+.doc-tabs { flex-wrap: wrap; row-gap: 12px; }
+.doc-tabs a { font-size: 22px; }
+.doc-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); margin-top: clamp(36px, 5vw, 64px); }
+.doc-toc { position: sticky; top: 130px; align-self: start; }
+.doc-toc ol { list-style: decimal; padding-left: 1.3em; margin: 0; color: var(--ink-soft); font-size: 14px; }
+.doc-toc li { padding: 5px 0; }
+.doc-toc a { color: var(--ink-soft); text-decoration: none; }
+.doc-toc a:hover { color: var(--brown); text-decoration: underline; text-underline-offset: 4px; }
+.doc-body { max-width: 70ch; }
+.doc-body h1 { font: 400 clamp(38px, 4.6vw, 60px)/1.05 var(--serif); margin: 0; }
+.doc-meta { color: var(--ink-soft); font-size: 14px; margin-top: 14px; }
+.doc-draft { margin: 28px 0 8px; padding: 14px 18px; background: var(--limestone); font-size: 14px; color: var(--ink-soft); }
+.doc-body section { scroll-margin-top: 130px; }
+.doc-body h2 { font: 400 clamp(26px, 2.6vw, 32px)/1.15 var(--serif); margin: 44px 0 14px; }
+.doc-body p, .doc-body li { font-size: 16px; line-height: 1.7; }
+.doc-body p { margin: 0 0 12px; }
+.doc-body ul { margin: 0 0 12px; padding-left: 1.2em; }
+.doc-body li { margin-bottom: 6px; }
+.doc-body li::marker { color: var(--walnut); }
+.doc-body a { color: var(--walnut); text-underline-offset: 3px; }
+.doc-body .tbl { overflow-x: auto; margin: 6px 0 18px; }
+.doc-body table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; min-width: 560px; }
+.doc-body th { text-align: left; font-weight: 500; color: var(--ink-soft); padding: 0 16px 10px 0; border-bottom: 1px solid var(--line-strong); }
+.doc-body td { vertical-align: top; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .doc-grid { grid-template-columns: minmax(0, 1fr); }
+  .doc-toc { display: none; }
+  .doc-tabs a { font-size: 19px; }
+  .doc-body section { scroll-margin-top: 90px; }
+}
+@media (max-width: 600px) {
+  .doc-body table { min-width: 0; }
+  .doc-body thead { display: none; }
+  .doc-body table, .doc-body tbody, .doc-body tr, .doc-body td { display: block; }
+  .doc-body tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .doc-body tr:first-child { border-top: 1px solid var(--line-strong); }
+  .doc-body td { border: 0; padding: 3px 0; }
+  .doc-body td::before { content: attr(data-label); display: block; font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+  .doc-body td:first-child::before { margin-top: 0; }
 }
