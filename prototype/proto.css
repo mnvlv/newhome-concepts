@@ -239,7 +239,7 @@
 /* Левая колонка заявки — как в варианте D */
 .contact .messengers { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
 .contact .messengers a { text-underline-offset: 5px; }
-.contact .form { align-self: start; }
+.contact .form { align-self: center; }
 .contact .reach { margin: 36px 0 0; max-width: 420px; border-top: 1px solid rgba(246,239,229,.16); font-size: 15px; }
 .contact .reach div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(246,239,229,.16); }
 .contact .reach dt { color: var(--soft); font-size: 13px; }
