@@ -335,7 +335,8 @@
       if (a.closest('.menu > li')) { clearTimeout(hoverT); setOpen(null); }
       var burger = a.closest('details.burger'); if (burger) burger.open = false;
       setCat(u.searchParams.get('cat'));
-      document.getElementById('catalog').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+      var cat = document.getElementById('catalog');
+      if (window.nhScrollTo && !reduce) window.nhScrollTo(cat); else cat.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
     });
     var reset = document.querySelector('[data-cat-reset]');
     if (reset) reset.addEventListener('click', function () { setCat(null); });

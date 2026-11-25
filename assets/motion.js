@@ -267,7 +267,9 @@
     window.addEventListener('touchmove', stop, { passive: false });
     window.addEventListener('keydown', key);
     window.addEventListener('pointerdown', onInput);
+    html.classList.add('m-hold'); // признак для плавной прокрутки (smooth.js): страницу сейчас не двигать
     return function () {
+      html.classList.remove('m-hold');
       window.removeEventListener('wheel', stop);
       window.removeEventListener('touchmove', stop);
       window.removeEventListener('keydown', key);
