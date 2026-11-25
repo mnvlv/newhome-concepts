@@ -59,10 +59,19 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font: 500 15px/1.4 var(--sans);
   text-decoration: none;
   padding-bottom: 6px;
-  border-bottom: 1px solid currentColor;
-  transition: border-color .2s, opacity .2s;
+  /* подчёркивание фоном: при наведении линия уходит вправо и заново рисуется слева */
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
 }
-.link-cta:hover { opacity: .72; }
+.link-cta:hover, .link-cta:focus-visible { animation: nh-redraw .7s cubic-bezier(.65,0,.35,1); }
+@keyframes nh-redraw {
+  0% { background-position: 100% 100%; background-size: 100% 1px; }
+  45% { background-position: 100% 100%; background-size: 0 1px; }
+  45.1% { background-position: 0 100%; background-size: 0 1px; }
+  100% { background-position: 0 100%; background-size: 100% 1px; }
+}
 
 /* Шапка: общая механика меню на телефоне (без JS, через details) */
 .menu-toggle { display: none; }
@@ -99,7 +108,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .chips span {
   display: inline-block; padding: 7px 14px; border: 1px solid currentColor; border-radius: 999px;
   font-size: 14px; opacity: .75;
+  transition: opacity .25s, background-color .25s;
 }
+.chips label:hover input:not(:checked) + span { opacity: 1; background-color: rgba(64,47,37,.06); background-color: color-mix(in srgb, currentColor 10%, transparent); }
 .chips input:checked + span { opacity: 1; background: currentColor; }
 .chips input:checked + span em { color: var(--chip-on, var(--cream)); }
 .chips em { font-style: normal; }

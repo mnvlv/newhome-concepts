@@ -104,7 +104,7 @@
         return '<li><a href="' + href + '"><strong>' + it[0] + '</strong>' + (it[1] ? '<span>' + it[1] + '</span>' : '') + '</a></li>';
       }).join('');
       var tag = m.ord ? 'ol' : 'ul';
-      return '<li><button type="button" aria-expanded="false" aria-controls="mega-' + i + '">' + m.t + '</button>' +
+      return '<li><button type="button" aria-expanded="false" aria-controls="mega-' + i + '"><span>' + m.t + '</span></button>' +
         '<div class="mega" id="mega-' + i + '"><div class="wrap"><div><h2>' + m.h + '</h2><' + tag + '>' + list + '</' + tag + '></div>' +
         '<figure><img src="' + IMG + m.fig[0] + '" alt="" loading="lazy"><figcaption>' + m.fig[1] + ' <a href="' + m.fig[3] + '">' + m.fig[2] + '</a></figcaption></figure></div></div></li>';
     }).join('');
@@ -480,6 +480,27 @@
       var done = form.querySelector('.form-done');
       done.setAttribute('tabindex', '-1'); done.focus();
     });
+  });
+
+  // «Я ...»: выбранный вариант встаёт сразу после «Я», остальные плавно сдвигаются.
+  // Порядок меняем только визуально (CSS order), поэтому фокус и стрелки на клавиатуре не сбиваются.
+  document.querySelectorAll('.who').forEach(function (fs) {
+    var labels = [].slice.call(fs.querySelectorAll('label'));
+    function place(animate) {
+      var before = labels.map(function (l) { return l.getBoundingClientRect(); });
+      labels.forEach(function (l) { l.classList.toggle('on', l.querySelector('input').checked); });
+      if (!animate || reduce || !labels[0].animate) return;
+      labels.forEach(function (l, i) {
+        var r = l.getBoundingClientRect(), dx = before[i].left - r.left, dy = before[i].top - r.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        l.animate([{ transform: 'translate(' + dx + 'px,' + dy + 'px)' }, { transform: 'none' }],
+          { duration: 480, easing: 'cubic-bezier(.65,0,.35,1)' });
+      });
+    }
+    fs.addEventListener('change', function () { place(true); });
+    var form = fs.closest('form');
+    if (form) form.addEventListener('reset', function () { setTimeout(function () { place(false); }); });
+    place(false);
   });
 
   // ---------- Карточка товара ----------
