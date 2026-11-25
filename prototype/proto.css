@@ -28,7 +28,8 @@
 .mega .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(28px, 5vw, 72px); padding-block: 32px 38px; }
 .mega h2 { font-size: 30px; font-weight: 400; margin-bottom: 18px; }
 .mega ol, .mega ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
-.mega li a { display: block; padding: 11px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+.mega li { display: flex; }
+.mega li a { flex: 1; display: block; padding: 11px 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .mega li a strong { display: block; font: 400 20px/1.25 var(--serif); }
 .mega li a span { font-size: 13px; color: var(--ink-soft); }
 .mega li a:hover strong { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
