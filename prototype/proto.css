@@ -236,11 +236,10 @@
 .contact { --chip-on: var(--brown-deep); }
 .contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); }
 .contact .lead { color: var(--soft); }
-.contact .messengers { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-.contact .messengers a { text-decoration: none; padding: 11px 20px; border: 1px solid rgba(246,239,229,.5); border-radius: 999px; font-size: 15px; }
-.contact .messengers a:first-child { background: var(--cream); color: var(--brown-deep); border-color: var(--cream); }
-.contact .reach { margin-top: 34px; display: grid; gap: 6px; color: var(--soft); font-size: 15px; }
-.contact .reach a { color: var(--cream); text-underline-offset: 4px; }
+/* Левая колонка заявки — как в варианте D */
+.contact .messengers { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
+.contact .messengers a { text-underline-offset: 5px; }
+.contact .arch { margin-top: 40px; width: 100%; max-width: 420px; aspect-ratio: 383 / 174; object-fit: cover; opacity: .8; }
 .req { font-size: 13px; color: var(--soft); }
 .attach { justify-self: start; background: none; border: 0; padding: 0; color: inherit; font: 400 14px var(--sans); cursor: pointer;
   text-decoration: underline; text-underline-offset: 4px; opacity: .85; }
