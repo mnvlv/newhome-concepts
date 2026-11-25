@@ -50,11 +50,12 @@
 .tool .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 .burger { display: none; }
-.cats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(246,239,229,.96); }
-.cats ul { display: flex; gap: clamp(18px, 3vw, 40px); overflow-x: auto; scrollbar-width: none; padding: 12px 0; white-space: nowrap; }
-.cats ul::-webkit-scrollbar { display: none; }
-.cats a { font: 400 19px/1.3 var(--serif); text-decoration: none; padding-bottom: 3px; border-bottom: 1px solid transparent; }
-.cats a:hover, .cats a[aria-current] { border-color: currentColor; }
+/* Категория каталога, выбранная в меню шапки */
+#catalog { scroll-margin-top: 136px; }
+@media (max-width: 560px) { #catalog { scroll-margin-top: 96px; } }
+.cat-on, .cat-empty { margin: -14px 0 26px; font-size: 15px; color: var(--ink-soft); }
+.cat-on[hidden], .cat-empty[hidden] { display: none; }
+.cat-on button { font: inherit; color: var(--brown); background: none; border: 0; padding: 0 0 2px; margin-left: 8px; cursor: pointer; border-bottom: 1px solid currentColor; }
 
 @media (max-width: 1080px) {
   .menu, .util .hide-md { display: none; }

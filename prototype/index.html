@@ -34,12 +34,12 @@
     <div class="wrap">
       <div class="head"><h2 class="h2" id="cats-h">Категории</h2></div>
       <div class="tiles">
-        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/living-room.jpg" alt="" loading="lazy"></div><span>Диваны</span></a>
-        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/armchair.jpg" alt="" loading="lazy"></div><span>Кресла</span></a>
-        <a class="tile" href="#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Кровати</span></a>
-        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/pedestal-table.jpg" alt="" loading="lazy"></div><span>Столовые группы</span></a>
-        <a class="tile" href="#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Массажные кресла</span></a>
-        <a class="tile" href="#catalog"><div class="ph"><img src="../assets/img/materials.jpg" alt="" loading="lazy"></div><span>Паркет и доска</span></a>
+        <a class="tile" href="?cat=Диваны#catalog"><div class="ph"><img src="../assets/img/living-room.jpg" alt="" loading="lazy"></div><span>Диваны</span></a>
+        <a class="tile" href="?cat=Кресла#catalog"><div class="ph"><img src="../assets/img/armchair.jpg" alt="" loading="lazy"></div><span>Кресла</span></a>
+        <a class="tile" href="?cat=Кровати#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Кровати</span></a>
+        <a class="tile" href="?cat=Столовые группы#catalog"><div class="ph"><img src="../assets/img/pedestal-table.jpg" alt="" loading="lazy"></div><span>Столовые группы</span></a>
+        <a class="tile" href="?cat=Массажные кресла#catalog"><div class="ph empty"><img src="../brand/logo/svg/mark-brown.svg" alt="" loading="lazy"></div><span>Массажные кресла</span></a>
+        <a class="tile" href="?cat=Паркет и доска#catalog"><div class="ph"><img src="../assets/img/materials.jpg" alt="" loading="lazy"></div><span>Паркет и доска</span></a>
       </div>
     </div>
   </section>
@@ -55,6 +55,8 @@
           <button type="button" aria-pressed="false" data-f="eu">Европа</button>
         </div>
       </div>
+      <p class="cat-on" hidden>Показаны товары одной категории. <button type="button" class="link-cta" data-cat-reset>Показать все</button></p>
+      <p class="cat-empty" hidden>В прототипе здесь пока нет товаров. На сайте будут все модели категории, а пока <a href="#contact">подберём по фото</a>.</p>
       <div class="goods" data-goods="sofa3,armchair,table,sofa,massage,parquet,bed,modular"></div>
       <p class="more"><a class="link-cta" href="#catalog">Весь каталог</a></p>
     </div>

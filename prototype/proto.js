@@ -84,17 +84,23 @@
       ['Подберём по фото', 'Пришлите фото, найдём или сделаем'], ['Ткани и отделки', 'Образцы в руках до оплаты']],
       fig: ['sofa-arch.jpg', 'Диван из капсулы: ткань и оттенок дерева выбираются под Ваш дом.', 'Смотреть диван', 'product.html?id=sofa'] },
     { t: 'Каталог мебели', h: 'Каталог мебели', items: [
-      ['Диваны', ''], ['Кресла', ''], ['Кровати', ''], ['Столовые группы', ''], ['Столики', ''], ['Массажные кресла', ''], ['Паркет и доска', ''], ['Новое в каталоге', '']],
+      ['Весь каталог', 'Все категории и страны'], ['Диваны', ''], ['Кресла', ''], ['Кровати', ''], ['Столовые группы', ''], ['Столики', ''], ['Массажные кресла', ''], ['Паркет и доска', '']],
       fig: ['armchair.jpg', 'Больше 2 000 моделей из Китая, России и Европы.', 'Весь каталог', 'index.html#catalog'] },
     { t: 'Дизайнерам и архитекторам', h: 'Дизайнерам и архитекторам', items: [
       ['Условия партнёрства', 'Как работаем с бюро'], ['Образцы материалов', 'Ткани, дерево и камень'],
       ['Спецификация и расчёт', 'На языке проекта'], ['Ведение до объекта', 'Срок, приёмка, рекламации']],
       fig: ['materials.jpg', 'Отдельные условия для дизайнеров и архитекторов.', 'Стать партнёром', 'index.html#contact'] }
   ];
+  // Ссылка пункта меню: категории каталога открывают каталог с фильтром (бывшая полоса категорий под шапкой)
+  function menuHref(m, it) {
+    if (m.t === 'Каталог мебели') return it[0] === 'Весь каталог' ? 'index.html#catalog' : 'index.html?cat=' + encodeURIComponent(it[0]) + '#catalog';
+    if (it[0] === 'Капсула для гостиной') return 'index.html#capsule';
+    return 'index.html#contact';
+  }
   function headerHTML(page) {
     var menu = MENU.map(function (m, i) {
       var list = m.items.map(function (it) {
-        var href = m.t === 'Каталог мебели' ? 'index.html#catalog' : (m.t === 'Подбор мебели' && i === 1 && it[0] === 'Капсула для гостиной') ? 'index.html#capsule' : 'index.html#contact';
+        var href = menuHref(m, it);
         return '<li><a href="' + href + '"><strong>' + it[0] + '</strong>' + (it[1] ? '<span>' + it[1] + '</span>' : '') + '</a></li>';
       }).join('');
       var tag = m.ord ? 'ol' : 'ul';
@@ -104,13 +110,9 @@
     }).join('');
     var burger = MENU.map(function (m) {
       return '<details><summary>' + m.t + '</summary>' + m.items.map(function (it) {
-        return '<a href="' + (m.t === 'Каталог мебели' ? 'index.html#catalog' : 'index.html#contact') + '">' + it[0] + '</a>';
+        return '<a href="' + menuHref(m, it) + '">' + it[0] + '</a>';
       }).join('') + '</details>';
     }).join('');
-    var cats = page === 'home' ? '<nav class="cats" aria-label="Каталог"><ul class="wrap">' +
-      ['Всё', 'Диваны', 'Кресла', 'Кровати', 'Столовые группы', 'Столики', 'Массажные кресла', 'Паркет и доска', 'На заказ'].map(function (c, i) {
-        return '<li><a href="#catalog"' + (i ? '' : ' aria-current="page"') + '>' + c + '</a></li>';
-      }).join('') + '</ul></nav>' : '';
     return '<div class="util"><div class="wrap">' +
       '<a class="hide-md" href="tel:+70000000000">+7 (000) 000-00-00</a>' +
       '<a href="mailto:info@newhome.example">info@newhome.example</a>' +
@@ -127,7 +129,7 @@
       '<a href="cart.html#fav">Избранное</a><a href="cart.html">Корзина</a><a href="index.html#contact">Обсудить проект</a>' +
       '<a href="tel:+70000000000">+7 (000) 000-00-00</a><a href="mailto:info@newhome.example">info@newhome.example</a>' +
       '<a href="https://2gis.ru/moscow" target="_blank" rel="noopener">Контакты и карта 2ГИС</a></div></details>' +
-      '</div></div>' + cats;
+      '</div></div>';
   }
   function footerHTML() {
     return '<div class="wrap"><div class="cols">' +
@@ -296,22 +298,61 @@
     wireCards(goods);
   }
   // Фильтр по стране: карточки плавно переезжают на новые места
+  // Категория приходит из меню шапки или плиток (?cat=Диваны#catalog)
   var filters = document.querySelector('.filters');
+  var it_animate = typeof Element.prototype.animate === 'function';
+  var catState = { c: 'all', cat: new URLSearchParams(location.search).get('cat') };
+  var catOn = document.querySelector('.cat-on'), catEmpty = document.querySelector('.cat-empty'), catH = document.getElementById('new-h');
+  function applyCatalog(animate) {
+    var items = Array.prototype.slice.call(goods.children), before = new Map();
+    items.forEach(function (it) { if (!it.hidden) before.set(it, it.getBoundingClientRect()); });
+    items.forEach(function (it) {
+      var p = PRODUCTS[it.getAttribute('data-id')];
+      it.hidden = (catState.c !== 'all' && p.c !== catState.c) || (catState.cat && p.cat !== catState.cat);
+    });
+    if (catH) catH.textContent = catState.cat || 'Новое в каталоге';
+    if (catOn) catOn.hidden = !catState.cat;
+    if (catEmpty) catEmpty.hidden = items.some(function (it) { return !it.hidden; });
+    if (!animate || reduce || !it_animate) return;
+    animateGoods(items, before);
+  }
+  function setCat(cat) {
+    catState.cat = cat || null;
+    var url = location.pathname + (cat ? '?cat=' + encodeURIComponent(cat) : '') + '#catalog';
+    history.replaceState(null, '', url);
+    applyCatalog(true);
+  }
+  if (goods) {
+    // На главной ссылки на категории не перезагружают страницу, а сразу фильтруют каталог
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]'); if (!a) return;
+      var u = new URL(a.getAttribute('href'), location.href);
+      var norm = function (p) { return p.replace(/index\.html$/, ''); };
+      if (norm(u.pathname) !== norm(location.pathname) || u.hash !== '#catalog') return;
+      e.preventDefault();
+      if (a.closest('.menu > li')) { clearTimeout(hoverT); setOpen(null); }
+      var burger = a.closest('details.burger'); if (burger) burger.open = false;
+      setCat(u.searchParams.get('cat'));
+      document.getElementById('catalog').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    });
+    var reset = document.querySelector('[data-cat-reset]');
+    if (reset) reset.addEventListener('click', function () { setCat(null); });
+    if (catState.cat) applyCatalog(false);
+  }
   if (filters && goods) filters.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     filters.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
-    var f = b.getAttribute('data-f'), items = Array.prototype.slice.call(goods.children), before = new Map();
-    items.forEach(function (it) { if (!it.hidden) before.set(it, it.getBoundingClientRect()); });
-    items.forEach(function (it) { it.hidden = f !== 'all' && it.getAttribute('data-c') !== f; });
-    if (reduce || !it_animate) return;
+    catState.c = b.getAttribute('data-f');
+    applyCatalog(true);
+  });
+  function animateGoods(items, before) {
     items.forEach(function (it, k) {
       if (it.hidden) return;
       var now = it.getBoundingClientRect(), was = before.get(it);
       if (was) it.animate([{ transform: 'translate(' + (was.left - now.left) + 'px,' + (was.top - now.top) + 'px)' }, { transform: 'none' }], { duration: 600, easing: 'cubic-bezier(.2,.7,.2,1)' });
       else it.animate([{ opacity: 0, transform: 'scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: 500, delay: 80 + k * 40, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
     });
-  });
-  var it_animate = typeof Element.prototype.animate === 'function';
+  }
 
   // ---------- «Производим и привозим» (из варианта A): страны въезжают с разных сторон и встают лесенкой ----------
   var geo = document.querySelector('.geo .countries');
